@@ -44,12 +44,12 @@ public class RefreshTokenService {
     }
 
     public LoginResponseDTO refreshToken(RefreshTokenRequestDTO refreshTokenRequestDTO) {
-        return this.refreshTokenRepository.findByToken(refreshTokenRequestDTO.getRefreshToken())
+        return this.refreshTokenRepository.findByToken(refreshTokenRequestDTO.refreshToken())
                 .map(this::verifyExpiration)
                 .map(RefreshToken::getUser)
                 .map(user -> {
                     String accessToken = tokenService.generateToken(user);
-                    return new LoginResponseDTO(accessToken, refreshTokenRequestDTO.getRefreshToken());
+                    return new LoginResponseDTO(accessToken, refreshTokenRequestDTO.refreshToken());
                 })
                 .orElseThrow(() -> new RequestException(ErrorData.INVALID_REFRESH_TOKEN));
     }
