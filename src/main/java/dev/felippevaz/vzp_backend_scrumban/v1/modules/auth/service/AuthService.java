@@ -12,7 +12,6 @@ import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.LoginRes
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.RegisterResponseDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.mapper.AuthMapper;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.domain.User;
-import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.repository.UserRepository;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
