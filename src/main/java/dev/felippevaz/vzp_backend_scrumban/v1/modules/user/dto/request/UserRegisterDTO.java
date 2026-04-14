@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
-public record UserRequestDTO(
+public record UserRegisterDTO(
 
         @NotBlank(message = "Username is mandatory")
         @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
