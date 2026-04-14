@@ -1,6 +1,5 @@
 package dev.felippevaz.vzp_backend_scrumban.v1.modules.user.controller;
 
-import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.dto.request.UserRegisterDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.dto.request.UserUpdateDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.dto.response.UserResponseDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.service.UserService;
