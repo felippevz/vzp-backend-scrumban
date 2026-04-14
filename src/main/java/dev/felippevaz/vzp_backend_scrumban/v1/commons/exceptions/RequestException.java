@@ -2,7 +2,6 @@ package dev.felippevaz.vzp_backend_scrumban.v1.commons.exceptions;
 
 import dev.felippevaz.vzp_backend_scrumban.v1.commons.domain.ErrorData;
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
 
 @Getter
 public class RequestException extends RuntimeException {
