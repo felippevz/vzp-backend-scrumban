@@ -4,8 +4,6 @@ import dev.felippevaz.vzp_backend_scrumban.v1.commons.domain.SecurityLoggerEvent
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.Objects;
-
 @Slf4j
 @Component
 public class SecurityAuditHandler {
