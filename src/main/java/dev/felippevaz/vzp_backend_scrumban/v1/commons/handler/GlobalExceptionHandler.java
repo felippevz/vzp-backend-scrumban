@@ -4,6 +4,7 @@ import dev.felippevaz.vzp_backend_scrumban.v1.commons.domain.ErrorData;
 import dev.felippevaz.vzp_backend_scrumban.v1.commons.domain.FieldErrorDetail;
 import dev.felippevaz.vzp_backend_scrumban.v1.commons.exceptions.RequestException;
 import org.jspecify.annotations.Nullable;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,6 +18,11 @@ import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException exception) {
+        return createProblemDetail(ErrorData.DATA_INTEGRITY_VIOLATION, null);
+    }
 
     @ExceptionHandler(RequestException.class)
     public ResponseEntity<Object> handleRequestException(RequestException exception) {

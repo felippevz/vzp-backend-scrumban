@@ -15,7 +15,8 @@ public enum ErrorData {
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "error:user_not_found", "User not found", "User not found"),
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "error:invalid_token", "Invalid token", "Invalid token"),
     INVALID_UPDATE_EMAIL(HttpStatus.BAD_REQUEST, "error:invalid_update_data", "Invalid update data", "Email already in use"),
-    INVALID_REFRESH_TOKEN(HttpStatus.UNAUTHORIZED, "error:invalid_refresh_token", "Invalid refresh token", "Token is expired"),;
+    INVALID_REFRESH_TOKEN(HttpStatus.UNAUTHORIZED, "error:invalid_refresh_token", "Invalid refresh token", "Token is expired"),
+    DATA_INTEGRITY_VIOLATION(HttpStatus.CONFLICT, "error:data_inegrity_violation", "Data violation", "Data integrity compromised");
 
     private final HttpStatus status;
     private final URI uri;
