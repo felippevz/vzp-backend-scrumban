@@ -50,7 +50,7 @@ public class UserService {
             throw new RequestException(ErrorData.INVALID_UPDATE_EMAIL);
         }
 
-        BeanUtils.copyProperties(userUpdateDTO, user);
+        this.userMapper.updateFromDTO(userUpdateDTO, user);
 
         return userMapper.toResponseDTO(user);
     }
