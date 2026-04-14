@@ -1,6 +1,7 @@
 package dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.controller;
 
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.request.LoginRequestDTO;
+import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.request.RefreshTokenRequestDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.request.RegisterRequestDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.LoginResponseDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.RegisterResponseDTO;
@@ -21,6 +22,11 @@ public class AuthController {
 
     public AuthController(AuthService authService) {
         this.authService = authService;
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<LoginResponseDTO> refreshToken(@Valid @RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO) {
+        return ResponseEntity.ok(this.authService.refreshToken(refreshTokenRequestDTO));
     }
 
     @PostMapping("/login")
