@@ -54,10 +54,6 @@ public class RefreshTokenService {
                 .orElseThrow(() -> new RequestException(ErrorData.INVALID_REFRESH_TOKEN));
     }
 
-    private boolean exists(String token) {
-        return refreshTokenRepository.findByToken(token).isPresent();
-    }
-
     private RefreshToken verifyExpiration(RefreshToken token) {
 
         if(token.getExpiryDate().isBefore(Instant.now())) {

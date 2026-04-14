@@ -5,7 +5,6 @@ import dev.felippevaz.vzp_backend_scrumban.v1.commons.exceptions.RequestExceptio
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.service.TokenService;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.domain.JWTUserDATA;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.util.Strings;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
