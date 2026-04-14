@@ -6,7 +6,6 @@ import dev.felippevaz.vzp_backend_scrumban.v1.commons.exceptions.RequestExceptio
 import dev.felippevaz.vzp_backend_scrumban.v1.commons.handler.SecurityAuditHandler;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.domain.RefreshToken;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.request.LoginRequestDTO;
-import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.request.RefreshTokenRequestDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.request.RegisterRequestDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.LoginResponseDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.RegisterResponseDTO;
@@ -53,8 +52,7 @@ public class AuthService  {
             assert authenticadUser != null;
 
             String token = tokenService.generateToken(authenticadUser);
-
-            RefreshToken refreshToken = refreshTokenService.create(authenticadUser);
+            RefreshToken refreshToken = refreshTokenService.getRefreshToken(authenticadUser);
 
             securityAuditHandler.log(SecurityLoggerEvent.LOGIN_SUCCESS, authenticadUser.getUsername());
 
@@ -69,10 +67,6 @@ public class AuthService  {
 
     public RegisterResponseDTO register(RegisterRequestDTO registerRequestDTO) {
         return saveUser(registerRequestDTO);
-    }
-
-    public LoginResponseDTO refreshToken(RefreshTokenRequestDTO refreshTokenRequestDTO) {
-        return refreshTokenService.refreshToken(refreshTokenRequestDTO);
     }
 
     private RegisterResponseDTO saveUser(RegisterRequestDTO registerRequestDTO) {

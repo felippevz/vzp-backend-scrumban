@@ -6,6 +6,7 @@ import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.request.RegisterR
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.LoginResponseDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.RegisterResponseDTO;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.service.AuthService;
+import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.service.RefreshTokenService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+    private final RefreshTokenService refreshTokenService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, RefreshTokenService refreshTokenService) {
         this.authService = authService;
+        this.refreshTokenService = refreshTokenService;
     }
 
     @PostMapping("/refresh")
     public ResponseEntity<LoginResponseDTO> refreshToken(@Valid @RequestBody RefreshTokenRequestDTO refreshTokenRequestDTO) {
-        return ResponseEntity.ok(this.authService.refreshToken(refreshTokenRequestDTO));
+        return ResponseEntity.ok(refreshTokenService.refreshToken(refreshTokenRequestDTO));
     }
 
     @PostMapping("/login")
