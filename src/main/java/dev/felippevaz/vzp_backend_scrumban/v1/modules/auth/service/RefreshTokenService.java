@@ -10,6 +10,7 @@ import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.dto.response.LoginRes
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.properties.RefreshTokenProperties;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.auth.repository.RefreshTokenRepository;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.domain.User;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -52,6 +53,15 @@ public class RefreshTokenService {
                     return new LoginResponseDTO(accessToken, refreshTokenRequestDTO.refreshToken());
                 })
                 .orElseThrow(() -> new RequestException(ErrorData.INVALID_REFRESH_TOKEN));
+    }
+
+    @Transactional
+    public RefreshToken getRefreshToken(User user) {
+
+        refreshTokenRepository.deleteByUser(user);
+        refreshTokenRepository.flush();
+
+        return create(user);
     }
 
     private RefreshToken verifyExpiration(RefreshToken token) {
