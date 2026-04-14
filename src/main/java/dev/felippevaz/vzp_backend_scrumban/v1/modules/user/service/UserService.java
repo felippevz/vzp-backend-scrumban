@@ -10,7 +10,6 @@ import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.dto.response.UserResp
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.mapper.UserMapper;
 import dev.felippevaz.vzp_backend_scrumban.v1.modules.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;

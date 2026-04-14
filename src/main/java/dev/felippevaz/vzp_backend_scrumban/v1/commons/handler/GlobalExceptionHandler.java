@@ -20,7 +20,7 @@ import java.util.List;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException exception) {
+    public ResponseEntity<Object> handleDataIntegrityViolationException() {
         return createProblemDetail(ErrorData.DATA_INTEGRITY_VIOLATION, null);
     }
 
