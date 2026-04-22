@@ -29,18 +29,15 @@ public class UserService {
         this.securityAuditHandler = securityAuditHandler;
     }
 
-    @PreAuthorize("hasRole('ADMIN') ")
     public Page<UserResponseDTO> findAll(Pageable pageable) {
         return userRepository.findAll(pageable).map(userMapper::toResponseDTO);
     }
 
-    @PreAuthorize("hasRole('ADMIN') or @securityService.isOwner(#id, principal)")
     public UserResponseDTO read(Long id) {
         return userMapper.toResponseDTO(getUser(id));
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ADMIN') or @securityService.isOwner(#id, principal)")
     public UserResponseDTO update(Long id, UserUpdateDTO userUpdateDTO) {
 
         User user = getUser(id);
@@ -54,7 +51,7 @@ public class UserService {
         return userMapper.toResponseDTO(user);
     }
 
-    @PreAuthorize("hasRole('ADMIN') or @securityService.isOwner(#id, principal)")
+    @Transactional
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
